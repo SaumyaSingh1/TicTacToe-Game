@@ -1,0 +1,33 @@
+body{
+   background-image: url("images/pattern_leaves-9_1_4_0-0_10_1__ffffff_8059d491_e05284_02a6f270_ecc94be3.png");
+  
+}
+.main-container{
+ 
+    display: flex;
+    justify-content: center;
+    height: 90vh;
+    align-items: center;
+}
+.container{
+    width:500px;
+    height: 500px;
+   display:grid;
+   grid-template-rows: 1fr 1fr 1fr; 
+   grid-template-columns: 1fr 1fr 1fr;
+   gap:0px;
+}
+.odd{
+    display: flex;
+   justify-content: center;
+    font-family:cursive;
+    font-size: 100px;
+    background-color: rgb(215, 176, 230,1);
+}
+.even{
+    display: flex;
+    justify-content: center;
+     font-family:cursive;
+     font-size: 100px;
+    background-color: rgba(121, 202, 242 );
+}
