@@ -3,10 +3,11 @@ let currentPlayer = "X";
 
 function writeXorO(elem) {
   const iid = Number(elem.id);
-   if(arr[iid]!=null) return;
-    arr[iid] = currentPlayer;
-    elem.innerText = currentPlayer;
+  if (arr[iid] !== null) return;
+  arr[iid] = currentPlayer;
+  elem.innerText = currentPlayer;
   checkWinner();
+
   if (currentPlayer == "X") {
     currentPlayer = "O";
   } else {
@@ -15,6 +16,8 @@ function writeXorO(elem) {
 }
 
 function checkWinner() {
+  let resultMsg = '';
+
   if (
     (arr[0] !== null && arr[0] == arr[1] && arr[1] == arr[2]) ||
     (arr[3] !== null && arr[3] == arr[4] && arr[4] == arr[5]) ||
@@ -25,11 +28,29 @@ function checkWinner() {
     (arr[0] !== null && arr[0] == arr[4] && arr[4] == arr[8]) ||
     (arr[2] !== null && arr[2] == arr[4] && arr[4] == arr[6])
   ) {
-    document.write(`winner is ${currentPlayer}`);
+    resultMsg = `Winner is ${currentPlayer} :) Please Refresh!`;
+    document.getElementById("result").innerHTML = resultMsg;
   } else if (!arr.some((e) => e === null)) {
-    document.write(`It's a Draw!!! :( `);
+    resultMsg = `It's a Draw!!! :( `;
+    document.getElementById("result").innerHTML = resultMsg;
   }
 }
 
+const cursor = document.querySelector('.cursor');
+let timeout;
 
- 
+document.addEventListener('mousemove', (e) => {
+  let x = e.pageX;
+  let y = e.pageY;
+
+  cursor.style.top = y + 'px';
+  cursor.style.left = x + 'px';
+  cursor.style.display = 'block';
+
+  function mouseStop() {
+    cursor.style.display = 'none';
+  }
+
+  clearTimeout(timeout);
+  timeout = setTimeout(mouseStop, 1000);
+});
